@@ -1,0 +1,100 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+using Unity.VisualScripting;
+
+public class TextFileReader : MonoBehaviour
+{
+    [SerializeField] Command[] commands = new Command[6];
+    TextFileSplitter splitter = new TextFileSplitter();
+    [SerializeField] GameObject talkPanel;
+    [SerializeField] Talk talkScript;
+
+    //コマンド一覧
+    private void Awake()
+    {
+        commands[0] = new Select();
+        commands[1] = new ValueChange();
+        commands[2] = new FadeIn();
+        commands[3] = new FadeOut();
+        commands[4] = new CharArt();
+        commands[5] = new Background();
+    }
+
+    public IEnumerator fileReader(TextAsset text)
+    {
+        string[] story = splitter.splitTextFile(text);
+        for (;GameManager.storyIndex < story.Length; GameManager.storyIndex++) 
+        {
+            Debug.Log("storyIndex：" + GameManager.storyIndex);
+            string line = story[GameManager.storyIndex];
+            if (line.IndexOf("<") == 0)
+            {
+                var colonIndex = line.IndexOf(':');
+                var endIndex = line.IndexOf('>');
+
+                // コマンド名
+                string command = line.Substring(1, colonIndex - 1);
+
+                // コマンド内容
+                string commandContent = line.Substring(
+                    colonIndex + 1,
+                    endIndex - colonIndex - 1
+                );
+
+                GameManager.commandExecuting = true;
+
+                commandSelector(command, commandContent, story);
+
+                yield return new WaitWhile(() => GameManager.commandExecuting);
+                continue;
+            }
+
+            if (line.Equals("}"))
+            {
+                commandSelector("選択肢", "}", story);
+            }
+            var brackets = line.IndexOf('「');
+            var talker = line.Substring(0, brackets);
+            var talk = line.Substring(brackets);
+
+            Debug.Log("話者：" + talker + "　内容：" + talk);
+            talkPanel.SetActive(true);
+            talkScript.callTalk(talker, talk);
+
+            GameManager.talking = true;
+            yield return new WaitWhile(() => GameManager.talking);
+        }
+
+        GameManager.storyIndex = 0;
+        yield return null;
+    }
+
+    void commandSelector(string command, string commandContent, string[] story)
+    {
+        talkPanel.SetActive(false);
+        switch (command) 
+        {
+            case "選択肢":
+                commands[0].useCommand(commandContent, story);
+                break;
+            case "値変化":
+                commands[1].useCommand(commandContent, story);
+                break;
+            case "フェードイン":
+                commands[2].useCommand(commandContent, story);
+                break;
+            case "フェードアウト":
+                commands[3].useCommand(commandContent, story);
+                break;
+            case "立ち絵":
+                //外部スクリプト
+                break;
+            case "背景":
+                commands[5].useCommand(commandContent, story);
+                break;
+        }
+
+    }
+}
