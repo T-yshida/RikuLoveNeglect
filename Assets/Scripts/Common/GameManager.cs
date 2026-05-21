@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public CanvasGroup fadeCanvasGroup;
     //背景を管理するスクリプト
     public BackgroundManager backgroundManager;
+    //キャラクターの動きを管理するスクリプト
+    public CharactorViewManager charactorViewManager;
 
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }

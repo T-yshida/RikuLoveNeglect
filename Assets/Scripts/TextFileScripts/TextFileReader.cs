@@ -29,6 +29,21 @@ public class TextFileReader : MonoBehaviour
         {
             Debug.Log("storyIndex：" + GameManager.storyIndex);
             string line = story[GameManager.storyIndex];
+            if (line.Equals("end"))
+            {
+                /*
+                 * 
+                 * 
+                 * 
+                 * 終わりの処理を書く
+                 * 
+                 * 
+                 * 
+                 * 
+                */
+                Debug.Log("終わりです。");
+            }
+
             if (line.IndexOf("<") == 0)
             {
                 var colonIndex = line.IndexOf(':');
@@ -54,6 +69,7 @@ public class TextFileReader : MonoBehaviour
             if (line.Equals("}"))
             {
                 commandSelector("選択肢", "}", story);
+                continue;
             }
             var brackets = line.IndexOf('「');
             var talker = line.Substring(0, brackets);
@@ -89,7 +105,7 @@ public class TextFileReader : MonoBehaviour
                 commands[3].useCommand(commandContent, story);
                 break;
             case "立ち絵":
-                //外部スクリプト
+                commands[4].useCommand(commandContent, story);
                 break;
             case "背景":
                 commands[5].useCommand(commandContent, story);
