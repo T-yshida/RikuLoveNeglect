@@ -47,21 +47,48 @@ public class CharactorViewManager : MonoBehaviour
     {
         if (sts[0].Equals("退場"))
         {
-            currentView.Fade(0);
+            currentView.Fade(0, 0.3f);
             GameManager.commandExecuting = false;
             return;
         }
         else
         {
+            //ポジションx,yを分割する処理
+            var vect = sts[3].Split(',');
+            var x = int.Parse(vect[0]);
+            var y = int.Parse(vect[1]);
+
+            //スケールをfloat変換する
+            var scale = float.Parse(sts[4]);
+
+            //これの分　加算する
+            currentView.Move(new Vector2(x, y), 0);
+            //これの分　掛ける
+            currentView.Scale(scale, 0);
+
             currentView.SetSprite(sts[2]);
-            currentView.Fade(1);
+            currentView.Fade(1, 0.3f);
+            
         }
         GameManager.commandExecuting = false;
     }
 
     void MoveScale(string[] sts)
     {
-        //CharactorViewManagerのMoveとScale呼ぶ
+        //ポジションx,yを分割する処理
+        var vect = sts[2].Split(',');
+        var x = int.Parse(vect[0]);
+        var y = int.Parse(vect[1]);
+
+        //スケールをfloat変換する
+        var scale = float.Parse(sts[3]);
+        //秒数をfloat変換する
+        var sec = float.Parse(sts[4]);
+        //これの分　加算する
+        currentView.Move(new Vector2(x, y), sec);
+        //これの分　掛ける
+        currentView.Scale(scale, sec);
+        GameManager.commandExecuting = false;
     }
 
     void changeArt(string[] sts)

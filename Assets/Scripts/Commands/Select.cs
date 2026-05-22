@@ -31,6 +31,7 @@ public class Select : Command
             {
                 GameManager.storyIndex++;
             }
+            GameManager.commandExecuting = false;
             return;
         }
         GameManager.storyIndex++;

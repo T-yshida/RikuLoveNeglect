@@ -23,25 +23,29 @@ public class CharactorView : MonoBehaviour
         var spriteName = (ImageData.imageType)Enum.Parse(typeof(ImageData.imageType), sprite);
         var spriteData = imageDatas.FirstOrDefault(x => x.type == spriteName).image;
         charImage.sprite = spriteData;
-        
     }
 
-    public void Move(Vector2 pos, float duration = 0.3f)
+    public void Move(Vector2 pos, float duration)
     {
         currentTween?.Kill();
 
-        currentTween = charRect.DOAnchorPos(pos, duration)
+        var toPosition = new Vector2(charRect.localPosition.x + pos.x, charRect.localPosition.y + pos.y);
+
+        Debug.Log(toPosition);
+
+        currentTween = charRect.DOAnchorPos(toPosition, duration)
             .SetEase(Ease.OutCubic);
     }
 
-    public void Fade(float alpha, float duration = 0.3f)
+    public void Fade(float alpha, float duration)
     {
         charCanvasGroup.DOFade(alpha, duration);
     }
 
-    public void Scale(float scale, float duration = 0.3f)
+    public void Scale(float scale, float duration)
     {
-        charRect.DOScale(scale, duration);
+        var toScale = charRect.localScale * scale;
+        charRect.DOScale(toScale, duration);
     }
 }
 
@@ -51,11 +55,11 @@ public class ImageData
     public enum imageType
     {
         NORMAL,
-        SMIRE,
+        SMILE,
         CRY,
         TROUBLE,
         ANGRY,
-        sSMIRE,
+        sSMILE,
         SURPRISE
     }
 

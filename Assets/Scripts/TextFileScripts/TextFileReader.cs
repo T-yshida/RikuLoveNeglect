@@ -29,6 +29,7 @@ public class TextFileReader : MonoBehaviour
         {
             Debug.Log("storyIndex：" + GameManager.storyIndex);
             string line = story[GameManager.storyIndex];
+            Debug.Log(line);
             if (line.Equals("end"))
             {
                 /*
@@ -42,6 +43,15 @@ public class TextFileReader : MonoBehaviour
                  * 
                 */
                 Debug.Log("終わりです。");
+            }
+
+            if (line.Equals("}"))
+            {
+                Debug.Log("選択肢の終わり");
+                GameManager.commandExecuting = true;
+                commandSelector("選択肢", "}", story);
+                yield return new WaitWhile(() => GameManager.commandExecuting);
+                continue;
             }
 
             if (line.IndexOf("<") == 0)
@@ -66,12 +76,12 @@ public class TextFileReader : MonoBehaviour
                 continue;
             }
 
-            if (line.Equals("}"))
+            var brackets = line.IndexOf('「');
+            Debug.Log(brackets);
+            if (brackets <= 0)
             {
-                commandSelector("選択肢", "}", story);
                 continue;
             }
-            var brackets = line.IndexOf('「');
             var talker = line.Substring(0, brackets);
             var talk = line.Substring(brackets);
 

@@ -9,7 +9,10 @@ public class TextFileSplitter
     {
         if (textFile != null)
         {
-            string[] splits = textFile.text.Split('\n');
+            string[] splits = textFile.text
+                                .Replace("\r", "")
+                                .Split('\n');
+
             return splits;
         }
 
