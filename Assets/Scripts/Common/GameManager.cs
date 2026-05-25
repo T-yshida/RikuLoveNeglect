@@ -36,4 +36,7 @@ public class GameManager : MonoBehaviour
     
     //トーク中
     public static bool talking { get; set; }
+
+    //キャラの初期位置
+    public static Vector2 initialPosition { get; } = new Vector2(0, -700);
 }
