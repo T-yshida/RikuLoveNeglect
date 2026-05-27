@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 //それぞれのキャラクターにアタッチする
 public class CharactorView : MonoBehaviour
@@ -22,6 +23,12 @@ public class CharactorView : MonoBehaviour
     {
         var spriteName = (ImageData.imageType)Enum.Parse(typeof(ImageData.imageType), sprite);
         var spriteData = imageDatas.FirstOrDefault(x => x.type == spriteName).image;
+        charImage.sprite = spriteData;
+    }
+
+    public void SetSprite(ImageData.imageType imageType)
+    {
+        var spriteData = imageDatas.FirstOrDefault(x => x.type == imageType).image;
         charImage.sprite = spriteData;
     }
 

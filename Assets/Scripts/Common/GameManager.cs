@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
     //病みメータ
     public static int illMeter { get; set; }
 
+    //鬱モード
+    public static bool isDepression { get; set; }
+
+    //pm
+    public static bool isPm { get; set; }
+
     //親愛度
     public static int loveMeter { get; set; }
 
@@ -39,4 +45,22 @@ public class GameManager : MonoBehaviour
 
     //キャラの初期位置
     public static Vector2 initialPosition { get; } = new Vector2(0, -700);
+
+    //デート場所を保持
+    public static place datePlace { get; set; }
+
+    //場所を表すenum
+    public enum place 
+    {
+        SHOPPING,
+        THEMEPARK,
+        HOME,
+        KAIKATU,
+        SEA,
+        CAFE,
+        FOREST,
+        SHRINE,
+        AQUA
+    }
+
 }

@@ -20,6 +20,17 @@ public class BackgroundManager : MonoBehaviour
         bg.image.SetActive(true);
         oldIndex = backgrounds.FindIndex(x => x.name == name);
     }
+
+    public void BGRandomChanger()
+    {
+        if(oldIndex != -1)
+        {
+            backgrounds[oldIndex].image.SetActive(false);
+        }
+        var bgIdx = Random.Range(0, backgrounds.Count);
+        backgrounds[bgIdx].image.SetActive(true);
+        oldIndex = bgIdx;
+    }
 }
 
 [System.Serializable]
