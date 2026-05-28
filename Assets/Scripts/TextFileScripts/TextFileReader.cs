@@ -6,10 +6,11 @@ using Unity.VisualScripting;
 
 public class TextFileReader : MonoBehaviour
 {
-    [SerializeField] Command[] commands = new Command[6];
+    Command[] commands = new Command[6];
     TextFileSplitter splitter = new TextFileSplitter();
     [SerializeField] GameObject talkPanel;
     [SerializeField] Talk talkScript;
+    [SerializeField] FadeManager fadeManager;
 
     //コマンド一覧
     private void Awake()
@@ -42,6 +43,7 @@ public class TextFileReader : MonoBehaviour
                  * 
                  * 
                 */
+                fadeManager.LoadSceneWithFade("GameScene");
                 Debug.Log("終わりです。");
             }
 
