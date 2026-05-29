@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51c52e5ee777d848882aeaee98af1c8, type: 3}
+  m_Name: Sflags
+  m_EditorClassIdentifier: 
+  SFlags:
+  - place: 0
+    flags: []
+  - place: 1
+    flags:
+    - discription: "\u89B3\u89A7\u8ECA\u306E\u9802\u70B9\u3067\u523A\u3055\u308C\u308B"
+      flag: 0000
+  - place: 2
+    flags:
+    - discription: "\u76E3\u7981\u3055\u308C\u98FC\u3044\u306A\u3089\u3055\u308Cend"
+      flag: 00
+    - discription: "\u653E\u706B(\u4E8C\u4EBA\u3068\u3082\u71C3\u3086\u308B)end"
+      flag: 0000
+  - place: 3
+    flags: []
+  - place: 4
+    flags:
+    - discription: "\u9996\u304B\u3089\u4E0B\u63BB\u3063\u5207\u3089\u308C\u3066\u9996\u62B1\u3048end"
+      flag: 0000
+  - place: 5
+    flags: []
+  - place: 6
+    flags: []
+  - place: 7
+    flags: []
+  - place: 8
+    flags:
+    - discription: "\u6C34\u69FD\u306B\u4E00\u7DD2\u306B\u30C0\u30A4\u30D6"
+      flag: 00
+    - discription: "\u30D5\u30B0\u6BD2\u3092\u98DF\u308F\u3055\u308C\u308B"
+      flag: 0000
