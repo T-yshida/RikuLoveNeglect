@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public BackgroundManager backgroundManager;
     //キャラクターの動きを管理するスクリプト
     public CharactorViewManager charactorViewManager;
+    //エンディング管理
+    public EndingObject endingObject;
+    //特殊エンディングフラグ
+    public SpecialEndFlag sEndFlag;
 
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }

@@ -21,6 +21,6 @@ public class SFlags
 [System.Serializable]
 public class Flags
 {
-    [SerializeField] public string discription;
+    [SerializeField] public string description;
     [SerializeField] public bool[] flag;
 }

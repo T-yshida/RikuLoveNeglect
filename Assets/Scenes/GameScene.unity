@@ -1048,7 +1048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &663878492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &741952245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2310,6 +2310,8 @@ MonoBehaviour:
   fadeCanvasGroup: {fileID: 1761494306}
   backgroundManager: {fileID: 264096504}
   charactorViewManager: {fileID: 1630219873}
+  endingObject: {fileID: 11400000, guid: cca27f92c6dcd5241b1e017f19c30029, type: 2}
+  sEndFlag: {fileID: 11400000, guid: ef57074fc55d0f743b26eab03eeb1d9c, type: 2}
 --- !u!4 &2016895449
 Transform:
   m_ObjectHideFlags: 0
