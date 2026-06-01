@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
@@ -23,4 +24,30 @@ public class Flags
 {
     [SerializeField] public string description;
     [SerializeField] public bool[] flag;
+
+    public void Set()
+    {
+        int cnt = 0;
+        while (true)
+        {
+            if(cnt < flag.Length)
+            {
+                if (flag[cnt] == false)
+                {
+                    flag[cnt] = true;
+                    break;
+                }
+                cnt++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public bool allFlag()
+    {
+        return flag.All(x => x);
+    }
 }

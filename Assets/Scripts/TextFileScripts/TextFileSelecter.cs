@@ -1,20 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TextFileSelecter : MonoBehaviour
 {
     [SerializeField] TextFileReader reader;
+    [SerializeField] SpecialEndFlag specialEndFlag;
     [SerializeField] public List<textFile> textFiles = new List<textFile>();
+    [SerializeField] AnimationCurve probabilityCurve;
 
-    private void Start()
+    void Start()
     {
-        fileSelecter();
+        Debug.Log(GameManager.datePlace);
+        float rate = probabilityCurve.Evaluate(GameManager.illMeter);
+        bool result = Random.value < rate;
+        if (result)
+        {
+            endFileSelector();
+        }
+        else
+        {
+            normalFileSelecter();
+        }
+        
     }
 
-    public void fileSelecter()
+    public void normalFileSelecter()
     {
         var textfile = textFiles.FirstOrDefault(x => x.place == GameManager.datePlace);
 
@@ -31,7 +46,7 @@ public class TextFileSelecter : MonoBehaviour
 
         if (candidates.Count > 0)
         {
-            int result = candidates[UnityEngine.Random.Range(0, candidates.Count)];
+            int result = candidates[UnityEngine.Random.Range(0, candidates.Count - 1)];
 
             switch (result)
             {
@@ -39,29 +54,58 @@ public class TextFileSelecter : MonoBehaviour
                 case 1:
                     Debug.Log("1の処理");
                     tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.HIILLNESS).textFiles;
-                    ta = tmpAsset[UnityEngine.Random.Range(0,tmpAsset.Count)];
+                    ta = tmpAsset[UnityEngine.Random.Range(0,tmpAsset.Count - 1)];
                     break;
                 //鬱
                 case 2:
                     Debug.Log("2の処理");
                     tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.DEPRESSION).textFiles;
-                    ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count)];
+                    ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
                     break;
                 //pm
                 case 3:
                     Debug.Log("3の処理");
                     tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.PM).textFiles;
-                    ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count)];
+                    ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
                     break;
             }
         }
         else
         {
             tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.NORMAL).textFiles;
-            ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count)];
+            ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
         }
 
-        reader.fileReader(ta);
+        StartCoroutine(reader.fileReader(ta));
+    }
+
+    public void endFileSelector()
+    {
+        TextAsset ta = null;
+        var textfile = textFiles.FirstOrDefault(x => x.place == GameManager.datePlace);
+        var spEnd = specialEndFlag.SFlags.Find(x => x.place == GameManager.datePlace);
+        if(spEnd != null)
+        {
+            var spEndFlag = spEnd.flags.Where(x => x.allFlag());
+            //スペシャルフラグがある場合
+            if (spEndFlag.Count() > 0)
+            {
+                ta = textfile.specialEnd[Random.Range(0, spEndFlag.Count() - 1)];
+                StartCoroutine(reader.fileReader(ta));
+                return;
+            }
+        }
+
+        //ノーマルバットエンド
+        if(textfile.normalEnd.Count > 0)
+        {
+            ta = textfile.normalEnd[Random.Range(0, textfile.normalEnd.Count - 1)];
+            StartCoroutine(reader.fileReader(ta));
+            return;
+        }
+
+        //エンディングがない所だったら
+        normalFileSelecter();
     }
 }
 
