@@ -5,8 +5,59 @@ using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
-    public void OnClick(BaseEventData data)
+    [SerializeField] OnTalk onTalk;
+
+    private int touchCount;
+    private int desCount;
+    private int healCount;
+
+    public enum Point 
     {
-        Debug.Log("クリックされた");
+        DESIRE,
+        HEAL
+    }
+
+    private void Start()
+    {
+        Reset();
+    }
+
+    private void Reset()
+    {
+        touchCount = 5;
+        desCount = 0;
+        healCount = 0;
+    }
+
+    public void OnTouch(Point tPoint)
+    {
+        onTalk.Talk(tPoint);
+        Debug.Log(tPoint);
+        touchCount--;
+        switch (tPoint)
+        {
+            case Point.DESIRE:
+                desCount++;
+                break;
+            case Point.HEAL:
+                healCount++; 
+                break;
+        }
+
+        if(touchCount == 0)
+        {
+            if(desCount > healCount)
+            {
+                //マグ
+                //いくつか足す
+                GameManager.loveMeter++;
+            }
+            else if(desCount < healCount)
+            {
+                //イヤし
+                //いくつか引く
+                GameManager.illMeter--;
+            }
+        }
     }
 }

@@ -86,7 +86,7 @@ public class HomeTalkManager : MonoBehaviour
         //トークパネル表示
         talkPanel.alpha = 1;
         //五秒後トークパネル消す
-        Invoke("fadeTalkPanel", 5f);
+        Invoke("fadeTalkPanel", 5.0f);
     }
 
     void fadeTalkPanel()
