@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     public EndingObject endingObject;
     //特殊エンディングフラグ
     public SpecialEndFlag sEndFlag;
+    //特殊エンディングフラグのコピー。↑のやつをリセットさせるため
+    public static SpecialEndFlag copySEndFlag;
+    //エンディング行った後、変数たちをリセットする
+    public EndReset endReset;
 
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }
@@ -67,4 +71,8 @@ public class GameManager : MonoBehaviour
         AQUA
     }
 
+    private void Start()
+    {
+        copySEndFlag = Instantiate(sEndFlag);
+    }
 }

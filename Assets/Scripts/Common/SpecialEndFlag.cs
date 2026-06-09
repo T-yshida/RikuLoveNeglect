@@ -5,11 +5,11 @@ using System.Linq;
 using UnityEngine;
 using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
+//GameManager‘¤‚ÅFX•Û‚Â
 [CreateAssetMenu]
 public class SpecialEndFlag : ScriptableObject
 {
     [SerializeField] public List<SFlags> SFlags = new List<SFlags>();
-    
 }
 
 [System.Serializable]

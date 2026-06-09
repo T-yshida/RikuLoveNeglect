@@ -25,6 +25,8 @@ public class End : Command
         int index = int.Parse(contents[1]);
 
         gameManager.endingObject.ending.Find(x => x.place == pName).endingContents[index].end = true;
+        gameManager.endReset.Reset();
 
+        GameManager.commandExecuting = false;
     }
 }

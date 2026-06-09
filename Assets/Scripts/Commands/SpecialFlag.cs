@@ -23,8 +23,10 @@ public class SpecialFlag : Command
         var place = (GameManager.place)Enum.Parse(typeof(GameManager.place), contents[0]);
         var index = int.Parse(contents[1]);
 
-        gameManager.sEndFlag.SFlags.Find(x => x.place == place)
+        GameManager.copySEndFlag.SFlags.Find(x => x.place == place)
             .flags[index]
             .Set();
+
+        GameManager.commandExecuting = false;
     }
 }
