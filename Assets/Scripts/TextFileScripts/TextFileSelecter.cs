@@ -31,7 +31,7 @@ public class TextFileSelecter : MonoBehaviour
 
     public void normalFileSelecter()
     {
-        var textfile = textFiles.FirstOrDefault(x => x.place == GameManager.datePlace);
+        var textfile = textFiles[(int)GameManager.datePlace];
 
         List<int> candidates = new List<int>();
         List<TextAsset> tmpAsset = new List<TextAsset>();
@@ -53,26 +53,26 @@ public class TextFileSelecter : MonoBehaviour
                 //•a‚Ýƒ‚‚¢
                 case 1:
                     Debug.Log("1‚Ìˆ—");
-                    tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.HIILLNESS).textFiles;
+                    tmpAsset = textfile.textFileContents[(int)textFileContent.ContentType.HIILLNESS].textFiles;
                     ta = tmpAsset[UnityEngine.Random.Range(0,tmpAsset.Count - 1)];
                     break;
                 //ŸT
                 case 2:
                     Debug.Log("2‚Ìˆ—");
-                    tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.DEPRESSION).textFiles;
+                    tmpAsset = textfile.textFileContents[(int)textFileContent.ContentType.DEPRESSION].textFiles;
                     ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
                     break;
                 //pm
                 case 3:
                     Debug.Log("3‚Ìˆ—");
-                    tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.PM).textFiles;
+                    tmpAsset = textfile.textFileContents[(int)textFileContent.ContentType.PM].textFiles;
                     ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
                     break;
             }
         }
         else
         {
-            tmpAsset = textfile.textFileContents.FirstOrDefault(x => x.contentType == textFileContent.ContentType.NORMAL).textFiles;
+            tmpAsset = textfile.textFileContents[(int)textFileContent.ContentType.NORMAL].textFiles;
             ta = tmpAsset[UnityEngine.Random.Range(0, tmpAsset.Count - 1)];
         }
 
@@ -82,8 +82,8 @@ public class TextFileSelecter : MonoBehaviour
     public void endFileSelector()
     {
         TextAsset ta = null;
-        var textfile = textFiles.FirstOrDefault(x => x.place == GameManager.datePlace);
-        var spEnd = specialEndFlag.SFlags.Find(x => x.place == GameManager.datePlace);
+        var textfile = textFiles[(int)GameManager.datePlace];
+        var spEnd = specialEndFlag.SFlags[(int)GameManager.datePlace];
         if(spEnd != null)
         {
             var spEndFlag = spEnd.flags.Where(x => x.allFlag());

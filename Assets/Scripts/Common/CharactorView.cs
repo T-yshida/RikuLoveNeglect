@@ -22,13 +22,13 @@ public class CharactorView : MonoBehaviour
     public void SetSprite(string sprite)
     {
         var spriteName = (ImageData.imageType)Enum.Parse(typeof(ImageData.imageType), sprite);
-        var spriteData = imageDatas.FirstOrDefault(x => x.type == spriteName).image;
+        var spriteData = imageDatas[(int)spriteName].image;
         charImage.sprite = spriteData;
     }
 
     public void SetSprite(ImageData.imageType imageType)
     {
-        var spriteData = imageDatas.FirstOrDefault(x => x.type == imageType).image;
+        var spriteData = imageDatas[(int)imageType].image;
         charImage.sprite = spriteData;
     }
 

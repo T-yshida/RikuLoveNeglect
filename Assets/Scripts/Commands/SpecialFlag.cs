@@ -23,7 +23,7 @@ public class SpecialFlag : Command
         var place = (GameManager.place)Enum.Parse(typeof(GameManager.place), contents[0]);
         var index = int.Parse(contents[1]);
 
-        GameManager.copySEndFlag.SFlags.Find(x => x.place == place)
+        GameManager.copySEndFlag.SFlags[(int)place]
             .flags[index]
             .Set();
 

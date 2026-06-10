@@ -15,6 +15,7 @@ public class OnTalk : MonoBehaviour
 
     public void Talk(TouchManager.Point point)
     {
+        CancelInvoke();
         string[] content;
         //pmモードとノーマルで話す内容変わる
         if (GameManager.isPm)

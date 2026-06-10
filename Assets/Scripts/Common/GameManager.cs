@@ -75,4 +75,26 @@ public class GameManager : MonoBehaviour
     {
         copySEndFlag = Instantiate(sEndFlag);
     }
+
+    public static void loveMeterPlus(int plus)
+    {
+        loveMeter += plus;
+    }
+
+    //plusがマイナスになる可能性がある
+    public static void illMeterPlus(int plus)
+    {
+        if (illMeter + plus < 0)
+        {
+            illMeter = 0;
+        }
+        else if(illMeter + plus > 100)
+        {
+            illMeter += 100;
+        }
+        else
+        {
+            illMeter += plus;
+        }
+    }
 }

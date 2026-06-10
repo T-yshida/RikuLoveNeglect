@@ -50,25 +50,25 @@ public class HomeTalkManager : MonoBehaviour
                 case 1:
                     Debug.Log("1の処理");
                     //トーク内容
-                    con = talkContent.Find(x => x.contentType == TalkContent.ContentType.HIILLNESS).contents;
+                    con = talkContent[(int)TalkContent.ContentType.HIILLNESS].contents;
                     //表情
-                    imgs = talkContent.Find(x => x.contentType == TalkContent.ContentType.HIILLNESS).imageType;
+                    imgs = talkContent[(int)TalkContent.ContentType.HIILLNESS].imageType;
                     break;
                 //鬱
                 case 2:
                     Debug.Log("2の処理");
                     //トーク内容
-                    con = talkContent.Find(x => x.contentType == TalkContent.ContentType.DEPRESSION).contents;
+                    con = talkContent[(int)TalkContent.ContentType.DEPRESSION].contents;
                     //表情
-                    imgs = talkContent.Find(x => x.contentType == TalkContent.ContentType.DEPRESSION).imageType;
+                    imgs = talkContent[(int)TalkContent.ContentType.DEPRESSION].imageType;
                     break;
                 //pm
                 case 3:
                     Debug.Log("3の処理");
                     //トーク内容
-                    con = talkContent.Find(x => x.contentType == TalkContent.ContentType.PM).contents;
+                    con = talkContent[(int)TalkContent.ContentType.PM].contents;
                     //表情
-                    imgs = talkContent.Find(x => x.contentType == TalkContent.ContentType.PM).imageType;
+                    imgs = talkContent[(int)TalkContent.ContentType.PM].imageType;
                     break;
             }
         }
@@ -76,9 +76,9 @@ public class HomeTalkManager : MonoBehaviour
         {
             //通常
             Debug.Log("4");
-            con = talkContent.Find(x => x.contentType == TalkContent.ContentType.NORMAL).contents;
+            con = talkContent[(int)TalkContent.ContentType.NORMAL].contents;
             //表情
-            imgs = talkContent.Find(x => x.contentType == TalkContent.ContentType.NORMAL).imageType;
+            imgs = talkContent[(int)TalkContent.ContentType.NORMAL].imageType;
         }
 
         talkText.text = con[UnityEngine.Random.Range(0, con.Count)];
