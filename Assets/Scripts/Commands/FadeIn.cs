@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 using DG.Tweening;
 using System.Threading.Tasks;
+using System.Globalization;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(Command))]
@@ -27,8 +28,9 @@ public class FadeIn : Command
 
     async Task wait(string commandContent)
     {
-        gameManager.fadeCanvasGroup.DOFade(1, float.Parse(commandContent));
-        await gameManager.fadeCanvasGroup.DOFade(1, float.Parse(commandContent)).AsyncWaitForCompletion();
+        FadeManager.Instance.FadeCanvasGroup.DOFade(1, float.Parse(commandContent));
+        await FadeManager.Instance.FadeCanvasGroup.DOFade(1, float.Parse(commandContent)).AsyncWaitForCompletion();
+        await Task.Delay(500);
         GameManager.commandExecuting = false;
     }
 }

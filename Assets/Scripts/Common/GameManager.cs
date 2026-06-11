@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
 
     //ゲーム画面に色々表示するcanvas
     public Canvas fieldCanvas;
-    //フェードインアウトの時に使う
-    public CanvasGroup fadeCanvasGroup;
     //背景を管理するスクリプト
     public BackgroundManager backgroundManager;
     //キャラクターの動きを管理するスクリプト

@@ -10,7 +10,7 @@ public class TouchManager : MonoBehaviour
     [SerializeField] OnTalk onTalk;
     [SerializeField] SkinshipFadeInOut fade;
 
-    [SerializeField] GameObject fadeObj;
+    [SerializeField] CanvasGroup fadeObj;
     [SerializeField] Text text;
 
     [SerializeField] GameObject[] backGroups;
@@ -28,6 +28,8 @@ public class TouchManager : MonoBehaviour
 
     private void Start()
     {
+        fadeObj = FadeManager.Instance.FadeCanvasGroup;
+        text = FadeManager.Instance.FadeText;
         Reset();
     }
 
@@ -74,7 +76,7 @@ public class TouchManager : MonoBehaviour
                     Debug.Log("loveMeter : " + GameManager.loveMeter);
                 }
                 text.text = "Ç‹ÇÆÇÌÇ¡ÇΩÅc";
-                fade.doFade(fadeObj.GetComponent<CanvasGroup>());
+                fade.doFade(fadeObj);
             }
             else if(desCount < healCount)
             {
@@ -88,7 +90,7 @@ public class TouchManager : MonoBehaviour
                     GameManager.isDepression = Random.Range(0, 100) <= 30 ? false : true;
                 }
                 text.text = "ñ¸Ç≥ÇÍÇΩÅc";
-                fade.doFade(fadeObj.GetComponent<CanvasGroup>());
+                fade.doFade(fadeObj);
             }
             Reset();
             Invoke("textClear", 3f); ;

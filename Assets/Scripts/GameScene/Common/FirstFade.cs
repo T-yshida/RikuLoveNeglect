@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class FirstFade : MonoBehaviour
 {
-    [SerializeField] FadeManager manager;
     // Start is called before the first frame update
     void Start()
     {
-        manager.startFade();
+        FadeManager.Instance.startFade();
     }
 }

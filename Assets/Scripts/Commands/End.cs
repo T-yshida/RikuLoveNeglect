@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEditor;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(Command))]
@@ -25,8 +27,14 @@ public class End : Command
         int index = int.Parse(contents[1]);
 
         gameManager.endingObject.ending[(int)pName].endingContents[index].end = true;
-        gameManager.endReset.Reset();
+        _ = wait();
+    }
 
-        GameManager.commandExecuting = false;
+    async Task wait()
+    {
+        FadeManager.Instance.FadeCanvasGroup.DOFade(1, 4f);
+        await FadeManager.Instance.FadeCanvasGroup.DOFade(1, 4f).AsyncWaitForCompletion();
+        gameManager.endReset.Reset();
+        FadeManager.Instance.LoadSceneWithFade("TitleScene");
     }
 }

@@ -17,7 +17,7 @@ public class EndReset : MonoBehaviour
         GameManager.loveMeter = 0;
         GameManager.isDepression = false;
         GameManager.isPm = false;
-
         GameManager.copySEndFlag = Instantiate(gameManager.sEndFlag);
+        GameManager.commandExecuting = false;
     }
 }

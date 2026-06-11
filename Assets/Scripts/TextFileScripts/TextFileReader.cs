@@ -10,8 +10,6 @@ public class TextFileReader : MonoBehaviour
     TextFileSplitter splitter = new TextFileSplitter();
     [SerializeField] GameObject talkPanel;
     [SerializeField] Talk talkScript;
-    [SerializeField] FadeManager fadeManager;
-
     //コマンド一覧
     private void Awake()
     {
@@ -45,7 +43,7 @@ public class TextFileReader : MonoBehaviour
                  * 
                  * 
                 */
-                fadeManager.LoadSceneWithFade("GameScene");
+                FadeManager.Instance.LoadSceneWithFade("GameScene");
                 Debug.Log("終わりです。");
             }
 
@@ -75,6 +73,11 @@ public class TextFileReader : MonoBehaviour
                 GameManager.commandExecuting = true;
 
                 commandSelector(command, commandContent, story);
+
+                if (command.Equals("エンド"))
+                {
+                    break;
+                }
 
                 yield return new WaitWhile(() => GameManager.commandExecuting);
                 continue;

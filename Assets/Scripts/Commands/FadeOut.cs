@@ -26,8 +26,8 @@ public class FadeOut : Command
 
     async Task wait(string commandContent)
     {
-        gameManager.fadeCanvasGroup.DOFade(0, float.Parse(commandContent));
-        await gameManager.fadeCanvasGroup.DOFade(0, float.Parse(commandContent)).AsyncWaitForCompletion();
+        FadeManager.Instance.FadeCanvasGroup.DOFade(0, float.Parse(commandContent));
+        await FadeManager.Instance.FadeCanvasGroup.DOFade(0, float.Parse(commandContent)).AsyncWaitForCompletion();
         GameManager.commandExecuting = false;
     }
 }
