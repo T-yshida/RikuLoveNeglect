@@ -1361,12 +1361,12 @@ MonoBehaviour:
   testString: "\u30B9\u30C6\u30B9\u30C6"
   choiseContent: {fileID: 1797359155}
   fieldCanvas: {fileID: 91716856}
-  fadeCanvasGroup: {fileID: 0}
   backgroundManager: {fileID: 1878149347}
   charactorViewManager: {fileID: 397174882}
   endingObject: {fileID: 11400000, guid: cca27f92c6dcd5241b1e017f19c30029, type: 2}
   sEndFlag: {fileID: 11400000, guid: ef57074fc55d0f743b26eab03eeb1d9c, type: 2}
   endReset: {fileID: 1692907817}
+  audioClipList: {fileID: 1854473390}
 --- !u!4 &1692907816
 Transform:
   m_ObjectHideFlags: 0
@@ -1497,6 +1497,57 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 469.28778, y: 951.016, z: -0.9413544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1854473389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854473391}
+  - component: {fileID: 1854473390}
+  m_Layer: 0
+  m_Name: AudioObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1854473390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854473389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f6583a0c79a2c49b667c16d5da9bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - songName: nisimoto
+    audio: {fileID: 8300000, guid: 28d03ddbcf64a254d8e8d8a195d50d20, type: 3}
+  - songName: wffe
+    audio: {fileID: 8300000, guid: d4b23f3a1340d4f47a6613c6c3d6c8d4, type: 3}
+  - songName: "\u5915\u65E5"
+    audio: {fileID: 8300000, guid: a91037a06d820d74e8b500d67939e095, type: 3}
+--- !u!4 &1854473391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854473389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 851.9368, y: 912.61304, z: 11.44084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1645,3 +1696,4 @@ SceneRoots:
   - {fileID: 1819929931}
   - {fileID: 1054919291}
   - {fileID: 1475894248}
+  - {fileID: 1854473391}

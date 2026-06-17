@@ -8,25 +8,26 @@ public class CauseList : MonoBehaviour
 {
     [SerializeField] Button rightButton;
     [SerializeField] Button leftButton;
+    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject[] causePanels;
     [SerializeField] List<causeList> lists = new List<causeList>();
 
+    bool[] endingBool;
     //４つずつ足したり引いたりする
-    int index = 0;
+    int index = 4;
+    const int PANELCOUNT = 4;
+
+    private void Awake()
+    {
+        endingBool = gameManager.endingObject.ToArray();
+        Debug.Log(endingBool[0]);
+    }
 
     private void OnEnable()
     {
-        index = 0;
+        index = PANELCOUNT;
         leftButton.interactable = false;
-
-        for (int i = 0; i < 4; i++)
-        {
-            var image = causePanels[i].GetComponentInChildren<Image>();
-            var text = causePanels[i].GetComponentInChildren<Text>();
-
-            image.sprite = lists[i].image;
-            text.text = lists[i].description;
-        }
+        NextPage(0, PANELCOUNT);
     }
 
     public void RightButton()
@@ -43,32 +44,22 @@ public class CauseList : MonoBehaviour
         }
 
         //リストを超えた場合の処理
-        if (index + 4 >= lists.Count)
+        if (index + PANELCOUNT >= lists.Count)
         {
+            index += PANELCOUNT;
             rightButton.interactable = false;
-            for (int i = index; i < lists.Count; i++)
-            {
-                causePanels[i % 4].SetActive(true);
-                var image = causePanels[i % 4].GetComponentInChildren<Image>();
-                var text = causePanels[i % 4].GetComponentInChildren<Text>();
+            NextPage(index - PANELCOUNT, lists.Count);
 
-                image.sprite = lists[i].image;
-                text.text = lists[i].description;
-            }
+            Debug.Log("RightButton : if");
         }
         else
         {
-            index += 4;
-            for(int i = index;i < index + 4; i++)
-            {
-                causePanels[i % 4].SetActive(true);
-                var image = causePanels[i % 4].GetComponentInChildren<Image>();
-                var text = causePanels[i % 4].GetComponentInChildren<Text>();
+            index += PANELCOUNT;
+            NextPage(index - PANELCOUNT, index);
 
-                image.sprite = lists[i].image;
-                text.text = lists[i].description;
-            }
+            Debug.Log("RightButton : else");
         }
+        Debug.Log(index);
     }
 
     public void LeftButton()
@@ -85,31 +76,62 @@ public class CauseList : MonoBehaviour
         }
 
         //リストゼロの時の処理
-        if (index - 4 <= 0)
+        if (index - PANELCOUNT <= PANELCOUNT)
         {
-            rightButton.interactable = false;
-            index = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                causePanels[i % 4].SetActive(false);
-                var image = causePanels[i].GetComponentInChildren<Image>();
-                var text = causePanels[i].GetComponentInChildren<Text>();
-
-                image.sprite = lists[i].image;
-                text.text = lists[i].description;
-            }
+            leftButton.interactable = false;
+            index = PANELCOUNT;
+            //0～3を表示するためnextを使う
+            NextPage(0, PANELCOUNT);
+            
+            Debug.Log("LeftButton : if");
         }
         else
         {
-            index -= 4;
-            for (int i = index; i < index + 4; i++)
-            {
-                causePanels[i % 4].SetActive(false);
-                var image = causePanels[i % 4].GetComponentInChildren<Image>();
-                var text = causePanels[i % 4].GetComponentInChildren<Text>();
+            index -= PANELCOUNT;
+            PrevPage(index, index - PANELCOUNT);
 
+            Debug.Log("LeftButton : else");
+        }
+        Debug.Log(index);
+    }
+
+
+    private void NextPage(int initial, int end)
+    {
+        for (int i = initial; i < end; i++)
+        {
+            causePanels[i % PANELCOUNT].SetActive(true);
+            var image = causePanels[i % PANELCOUNT].GetComponentInChildren<Image>();
+            var text = causePanels[i % PANELCOUNT].GetComponentInChildren<Text>();
+
+            if (endingBool[i])
+            {
                 image.sprite = lists[i].image;
                 text.text = lists[i].description;
+            }
+            else
+            {
+                text.text = "未達";
+            }
+        }
+    }
+
+    private void PrevPage(int initial, int end)
+    {
+        for (int i = initial; i >= end; i--)
+        {
+            causePanels[i % PANELCOUNT].SetActive(true);
+            var image = causePanels[i % PANELCOUNT].GetComponentInChildren<Image>();
+            var text = causePanels[i % PANELCOUNT].GetComponentInChildren<Text>();
+
+            if (endingBool[i])
+            {
+                image.sprite = lists[i].image;
+                text.text = lists[i].description;
+            }
+            else
+            {
+                text.text = "未達";
             }
         }
     }

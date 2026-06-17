@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class TextFileReader : MonoBehaviour
 {
-    Command[] commands = new Command[8];
+    Command[] commands = new Command[9];
     TextFileSplitter splitter = new TextFileSplitter();
     [SerializeField] GameObject talkPanel;
     [SerializeField] Talk talkScript;
@@ -21,6 +21,7 @@ public class TextFileReader : MonoBehaviour
         commands[5] = new Background();
         commands[6] = new End();
         commands[7] = new SpecialFlag();
+        commands[8] = new BGM();
     }
 
     public IEnumerator fileReader(TextAsset text)
@@ -132,6 +133,9 @@ public class TextFileReader : MonoBehaviour
                 break;
             case "“ÁŽêƒtƒ‰ƒO":
                 commands[7].useCommand(commandContent, story);
+                break;
+            case "‰¹Šy":
+                commands[8].useCommand(commandContent, story);
                 break;
         }
 

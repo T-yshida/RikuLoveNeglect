@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public static SpecialEndFlag copySEndFlag;
     //エンディング行った後、変数たちをリセットする
     public EndReset endReset;
+    //BGMのリスト
+    public AudioClipList audioClipList;
 
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }
@@ -55,6 +57,9 @@ public class GameManager : MonoBehaviour
     //デート場所を保持
     public static place datePlace { get; set; }
 
+    //エンド数
+    public static int endCount { get; } = 14;
+
     //場所を表すenum
     public enum place 
     {
@@ -80,6 +85,7 @@ public class GameManager : MonoBehaviour
     }
 
     //plusがマイナスになる可能性がある
+    //メータ上げ下げは全部ここ
     public static void illMeterPlus(int plus)
     {
         if (illMeter + plus < 0)
