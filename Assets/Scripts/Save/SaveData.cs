@@ -3,12 +3,12 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
-    public List<FlagSaveData> specialFlags;
-}
-
-[System.Serializable]
-public class FlagSaveData
-{
-    public GameManager.place place;
-    public List<bool[]> flags;
+    public int illMeter;
+    public int loveMeter;
+    public bool isDepression;
+    public bool isPm;
+    public int volume;
+    public bool isNotice;
+    public List<SFlags> specialFlags;
+    public List<Ending> endingFlags;
 }

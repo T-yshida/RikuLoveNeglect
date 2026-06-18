@@ -7,6 +7,12 @@ public class VolumeSetting : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private TMP_Text volumeText;
 
+    private void OnEnable()
+    {
+        volumeSlider.value = GameManager.volume;
+        volumeText.text = $"音量 {GameManager.volume}";
+    }
+
     private void Start()
     {
         volumeSlider.onValueChanged.AddListener(ChangeVolume);
@@ -22,7 +28,6 @@ public class VolumeSetting : MonoBehaviour
 
         volumeText.text = $"音量 {volume}";
 
-        // 実際の音量変更
-        AudioListener.volume = volume / 100f;
+        // 実際の音量変更は保存ボタンで行う
     }
 }

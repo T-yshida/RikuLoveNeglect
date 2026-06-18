@@ -5,6 +5,8 @@ using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
     //テスト
@@ -29,6 +31,10 @@ public class GameManager : MonoBehaviour
     public EndReset endReset;
     //BGMのリスト
     public AudioClipList audioClipList;
+    //セーブ
+    public Save save;
+    //ロード
+    public Load load;
 
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }
@@ -50,6 +56,12 @@ public class GameManager : MonoBehaviour
     
     //トーク中
     public static bool talking { get; set; }
+
+    //音声ボリューム
+    public static int volume { get; set; } = 100;
+
+    //通知
+    public static bool isNotice {  get; set; }
 
     //キャラの初期位置
     public static Vector2 initialPosition { get; } = new Vector2(0, -700);
@@ -74,7 +86,7 @@ public class GameManager : MonoBehaviour
         AQUA
     }
 
-    private void Start()
+    private void Awake()
     {
         copySEndFlag = Instantiate(sEndFlag);
     }
