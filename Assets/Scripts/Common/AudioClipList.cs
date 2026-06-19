@@ -11,6 +11,21 @@ public class AudioClipList : MonoBehaviour
         AudioClip clip = clipList.Find(x => x.songName.Equals(songName)).audio;
         AudioManager.Instance.PlayBGM(clip);
     }
+
+    public void audioStop()
+    {
+        AudioManager.Instance.StopBGM();
+    }
+
+    public void audioParse()
+    {
+        AudioManager.Instance.ParseBGM();
+    }
+
+    public void audioReplay()
+    {
+        AudioManager.Instance.RestartBGM();
+    }
 }
 
 [System.Serializable]

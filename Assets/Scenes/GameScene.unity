@@ -2387,6 +2387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 663878492}
   - component: {fileID: 663878493}
+  - component: {fileID: 663878494}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -2428,6 +2429,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgManager: {fileID: 264096504}
+--- !u!114 &663878494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663878491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51f2cab5d2f3ba448b6050d10c3ac10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkPanel: {fileID: 1832418800}
+  text: {fileID: 1437489780}
 --- !u!1 &667409769
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Save : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Save : MonoBehaviour
         save.specialFlags = GameManager.copySEndFlag.SFlags;
         save.endingFlags = gameManager.endingObject.ending;
 
+        save.lastTime = DateTime.Now.ToString("O");
         save.illMeter = GameManager.illMeter;
         save.loveMeter = GameManager.loveMeter;
         save.isDepression = GameManager.isDepression;

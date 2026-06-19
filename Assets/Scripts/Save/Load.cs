@@ -2,6 +2,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Load : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class Load : MonoBehaviour
             GameManager.copySEndFlag.SFlags = data.specialFlags;
             gameManager.endingObject.ending = data.endingFlags;
 
+            GameManager.lastTime     = DateTime.Parse(data.lastTime);
             GameManager.illMeter     = data.illMeter;
             GameManager.loveMeter    = data.loveMeter;
             GameManager.isDepression = data.isDepression;

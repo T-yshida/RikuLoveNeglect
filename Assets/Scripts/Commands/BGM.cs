@@ -17,7 +17,21 @@ public class BGM : Command
 
     public override void useCommand(string commandContent, string[] story)
     {
-        gameManager.audioClipList.audioPlay(commandContent);
+        switch (commandContent) 
+        {
+            case "STOP":
+                gameManager.audioClipList.audioStop();
+                break;
+            case "PARSE":
+                gameManager.audioClipList.audioParse();
+                break;
+            case "REPLAY":
+                gameManager.audioClipList.audioReplay();
+                break;
+            default:
+                gameManager.audioClipList.audioPlay(commandContent);
+                break;
+        }
         GameManager.commandExecuting = false;
     }
 }

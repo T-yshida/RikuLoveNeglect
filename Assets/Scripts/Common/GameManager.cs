@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -71,6 +72,9 @@ public class GameManager : MonoBehaviour
 
     //エンド数
     public static int endCount { get; } = 14;
+
+    //前回アプリを終了した時刻
+    public static DateTime lastTime { get; set; }
 
     //場所を表すenum
     public enum place 

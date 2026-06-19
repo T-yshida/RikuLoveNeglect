@@ -3,6 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
+    public string lastTime;
     public int illMeter;
     public int loveMeter;
     public bool isDepression;

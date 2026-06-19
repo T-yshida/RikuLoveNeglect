@@ -27,6 +27,24 @@ public class AudioManager : MonoBehaviour
         bgmSource.Play();
     }
 
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
+    public void ParseBGM()
+    {
+        bgmSource.Pause();
+    }
+
+    public void RestartBGM()
+    {
+        if(bgmSource.clip != null)
+        {
+            bgmSource.Play();
+        }
+    }
+
     public void PlaySE(AudioClip clip)
     {
         seSource.PlayOneShot(clip);
