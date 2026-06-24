@@ -18,6 +18,7 @@ public class TouchManager : MonoBehaviour
     private int touchCount;
     private int desCount;
     private int healCount;
+    private int placeIndex;
     private CanvasGroup canvas;
 
     public enum Point 
@@ -28,6 +29,7 @@ public class TouchManager : MonoBehaviour
 
     private void Start()
     {
+        placeIndex = 0;
         fadeObj = FadeManager.Instance.FadeCanvasGroup;
         text = FadeManager.Instance.FadeText;
         Reset();
@@ -101,5 +103,31 @@ public class TouchManager : MonoBehaviour
     {
         text.text = "";
         canvas.blocksRaycasts = true;
+    }
+
+    public void leftButton()
+    {
+        backGroups[placeIndex].SetActive(false);
+
+        placeIndex--;
+        if (placeIndex <= -1)
+        {
+            placeIndex = backGroups.Length -1;
+        }
+
+        backGroups[placeIndex].SetActive(true);
+    }
+
+    public void rightButton()
+    {
+        backGroups[placeIndex].SetActive(false);
+
+        placeIndex++;
+        if (placeIndex >= backGroups.Length)
+        {
+            placeIndex = 0;
+        }
+
+        backGroups[placeIndex].SetActive(true);
     }
 }
