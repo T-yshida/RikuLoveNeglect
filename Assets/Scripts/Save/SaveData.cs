@@ -3,6 +3,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
+    public string seasonTime;
+    public Season.season season;
     public string lastTime;
     public int illMeter;
     public int loveMeter;

@@ -15,6 +15,7 @@ public class TextFileSelecter : MonoBehaviour
 
     void Start()
     {
+        //GameManager.illMeter = 0;
         Debug.Log(GameManager.datePlace);
         float rate = probabilityCurve.Evaluate(GameManager.illMeter);
         bool result = Random.value < rate;

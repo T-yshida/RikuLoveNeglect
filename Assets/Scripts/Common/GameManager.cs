@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
     //ロード
     public Load load;
 
+
+
+    //最初のトークフラグ
+    public static bool firstTalkFlag { get; set; } = true;
+
     //テキストファイルから読み込んだストーリが何行目かを指す
     public static int storyIndex { get; set; }
 
@@ -54,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     //コマンド実行状態
     public static bool commandExecuting { get; set; }
-    
+
     //トーク中
     public static bool talking { get; set; }
 
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour
     public static int volume { get; set; } = 100;
 
     //通知
-    public static bool isNotice {  get; set; }
+    public static bool isNotice { get; set; }
 
     //キャラの初期位置
     public static Vector2 initialPosition { get; } = new Vector2(0, -700);
@@ -75,6 +80,12 @@ public class GameManager : MonoBehaviour
 
     //前回アプリを終了した時刻
     public static DateTime lastTime { get; set; }
+
+    //季節を決めるための時刻
+    public static DateTime seasonTime { get; set; }
+
+    //現在の季節
+    public static Season.season nowSeason { get; set; }
 
     //場所を表すenum
     public enum place 

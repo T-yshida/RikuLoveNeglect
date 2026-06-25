@@ -10,7 +10,7 @@ public class VolumeSetting : MonoBehaviour
     private void OnEnable()
     {
         volumeSlider.value = GameManager.volume;
-        volumeText.text = $"音量 {GameManager.volume}";
+        volumeText.text = $"{GameManager.volume}";
     }
 
     private void Start()
@@ -26,7 +26,7 @@ public class VolumeSetting : MonoBehaviour
         // 0～100で表示
         int volume = Mathf.RoundToInt(value);
 
-        volumeText.text = $"音量 {volume}";
+        volumeText.text = $"{volume}";
 
         // 実際の音量変更は保存ボタンで行う
     }

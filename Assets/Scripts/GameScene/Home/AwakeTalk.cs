@@ -13,8 +13,9 @@ public class AwakeTalk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.lastTime != DateTime.MinValue)
+        if(GameManager.lastTime != DateTime.MinValue && GameManager.firstTalkFlag)
         {
+            GameManager.firstTalkFlag = false;
             TimeSpan diffTime = DateTime.Now - GameManager.lastTime;
             string fomatText = FormatTimeSpan(diffTime);
 
