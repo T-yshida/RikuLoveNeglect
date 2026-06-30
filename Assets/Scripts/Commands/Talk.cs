@@ -36,7 +36,8 @@ public class Talk : MonoBehaviour
     public void callTalk(string name, string talkMessage)
     {
         nameText.text = name;
-        message = talkMessage;
+        message = talkMessage.Replace("{$name}", GameManager.gfName);
+
         StartCoroutine(TypeText());
     }
 

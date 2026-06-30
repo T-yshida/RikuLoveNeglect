@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
 
 
+    //彼女の名前
+    public static string gfName { get; private set; } = "まなか";//←後で消す
+
     //最初のトークフラグ
     public static bool firstTalkFlag { get; set; } = true;
 
@@ -127,5 +130,10 @@ public class GameManager : MonoBehaviour
         {
             illMeter += plus;
         }
+    }
+
+    public void SetName(string name)
+    {
+        gfName = name;
     }
 }
