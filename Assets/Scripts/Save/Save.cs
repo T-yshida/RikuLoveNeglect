@@ -25,6 +25,7 @@ public class Save : MonoBehaviour
         save.isPm = GameManager.isPm;
         save.volume = GameManager.volume;
         save.isNotice = GameManager.isNotice;
+        save.isFirstPlay = true;
 
         if ((DateTime.Now - GameManager.seasonTime).TotalDays >= 7)
         {

@@ -43,6 +43,7 @@ public class Load : MonoBehaviour
             GameManager.isPm         = data.isPm;
             GameManager.volume       = data.volume;
             GameManager.isNotice     = data.isNotice;
+            GameManager.isFirstPlay  = data.isFirstPlay;
         }
         
     }

@@ -37,8 +37,6 @@ public class GameManager : MonoBehaviour
     //ロード
     public Load load;
 
-
-
     //彼女の名前
     public static string gfName { get; private set; } = "まなか";//←後で消す
 
@@ -89,6 +87,9 @@ public class GameManager : MonoBehaviour
 
     //現在の季節
     public static Season.season nowSeason { get; set; }
+
+    //ゲームを一回でも立ち上げたかどうか
+    public static bool isFirstPlay { get; set; }
 
     //場所を表すenum
     public enum place 
