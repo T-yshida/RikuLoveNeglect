@@ -16,6 +16,7 @@ public class Save : MonoBehaviour
         save.specialFlags = GameManager.copySEndFlag.SFlags;
         save.endingFlags = gameManager.endingObject.ending;
 
+        save.herName = GameManager.gfName;
         save.season = GameManager.nowSeason;
         save.seasonTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         save.lastTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");

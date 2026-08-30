@@ -6,37 +6,30 @@ using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
-    [SerializeField] public List<background> backgrounds = new List<background>();
+    [SerializeField] public List<GameObject> backgrounds = new List<GameObject>();
     public int oldIndex = -1;
 
     public void BGChanger(string name)
     {
+        int idx = int.Parse(name);
         //Šù‚É•\Ž¦‚µ‚Ä‚ ‚é”wŒi‚ª‚ ‚éê‡‚Í”ñ•\Ž¦‚É‚·‚é
         if(oldIndex != -1)
         {
-            backgrounds[oldIndex].image.SetActive(false);
+            backgrounds[oldIndex].SetActive(false);
         }
-        var bg = backgrounds.FirstOrDefault(x => x.name == name);
-        bg.image.SetActive(true);
-        oldIndex = backgrounds.FindIndex(x => x.name == name);
+        backgrounds[idx].SetActive(true);
+        oldIndex = idx;
     }
 
     public void BGRandomChanger()
     {
         if(oldIndex != -1)
         {
-            backgrounds[oldIndex].image.SetActive(false);
+            backgrounds[oldIndex].SetActive(false);
         }
         var bgIdx = Random.Range(0, backgrounds.Count);
-        backgrounds[bgIdx].image.SetActive(true);
+        backgrounds[bgIdx].SetActive(true);
         oldIndex = bgIdx;
     }
-}
-
-[System.Serializable]
-public class background 
-{
-    public string name;
-    public GameObject image;
 }
 

@@ -84,18 +84,28 @@ public class TextFileReader : MonoBehaviour
                 continue;
             }
 
-            var brackets = line.IndexOf('「');
-            Debug.Log(brackets);
-            if (brackets <= 0)
+            //ナレーション
+            if (line.IndexOf("N") == 0)
             {
-                continue;
-            }
-            var talker = line.Substring(0, brackets);
-            var talk = line.Substring(brackets);
+                talkPanel.SetActive(true);
+                talkScript.callTalk("", line.Substring(1));
 
-            Debug.Log("話者：" + talker + "　内容：" + talk);
-            talkPanel.SetActive(true);
-            talkScript.callTalk(talker, talk);
+            }
+            else
+            {
+                var brackets = line.IndexOf('「');
+                Debug.Log(brackets);
+                if (brackets <= 0)
+                {
+                    continue;
+                }
+                var talker = line.Substring(0, brackets);
+                var talk = line.Substring(brackets + 1, line.Length - (brackets + 2));
+
+                Debug.Log("話者：" + talker + "　内容：" + talk);
+                talkPanel.SetActive(true);
+                talkScript.callTalk(talker, talk);
+            }
 
             GameManager.talking = true;
             yield return new WaitWhile(() => GameManager.talking);

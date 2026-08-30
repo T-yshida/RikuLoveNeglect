@@ -19,14 +19,12 @@ public class CharactorView : MonoBehaviour
 
     [NonSerialized] public Tween currentTween;
 
-    public void SetSprite(string sprite)
+    public void SetSprite(int faceIdx)
     {
-        var spriteName = (ImageData.imageType)Enum.Parse(typeof(ImageData.imageType), sprite);
-        var spriteData = imageDatas[(int)spriteName].image;
-        charImage.sprite = spriteData;
+        charImage.sprite = imageDatas[faceIdx].image;
     }
 
-    public void SetSprite(ImageData.imageType imageType)
+    public void SetSprite(GameManager.imageTypeKanojo imageType)
     {
         var spriteData = imageDatas[(int)imageType].image;
         charImage.sprite = spriteData;
@@ -59,17 +57,6 @@ public class CharactorView : MonoBehaviour
 [System.Serializable]
 public class ImageData
 {
-    public enum imageType
-    {
-        NORMAL,
-        SMILE,
-        CRY,
-        TROUBLE,
-        ANGRY,
-        sSMILE,
-        SURPRISE
-    }
-
-    public imageType type;
+    public string displayName;
     public Sprite image;
 }

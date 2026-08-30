@@ -35,7 +35,7 @@ public class Talk : MonoBehaviour
 
     public void callTalk(string name, string talkMessage)
     {
-        nameText.text = name;
+        nameText.text = (name == "îﬁèó") ? GameManager.gfName : name;
         message = talkMessage.Replace("{$name}", GameManager.gfName);
 
         StartCoroutine(TypeText());

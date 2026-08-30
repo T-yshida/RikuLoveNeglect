@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 /*
  * content要素番号
@@ -66,7 +67,7 @@ public class CharactorViewManager : MonoBehaviour
             //これの分　掛ける
             currentView.Scale(scale, 0);
 
-            currentView.SetSprite(sts[2]);
+            currentView.SetSprite(charEnumSelect(sts[2]));
             currentView.Fade(1, 0.3f);
             
         }
@@ -93,7 +94,29 @@ public class CharactorViewManager : MonoBehaviour
 
     void changeArt(string[] sts)
     {
-        currentView.SetSprite(sts[2]);
+        currentView.SetSprite(charEnumSelect(sts[2]));
         GameManager.commandExecuting = false;
+    }
+
+    //キャラごとにEnumが違うため、ここにて検索をかける
+    int charEnumSelect(string face)
+    {
+        int idx = 0;
+        switch (currentView.charId) {
+            case "kanojo":
+                var kanojoFace = (CharKanojo.imageTypeKanojo)Enum.Parse(typeof(CharKanojo.imageTypeKanojo), face);
+                idx = (int)kanojoFace;
+                break;
+            case "homekanojo":
+                var homeKanojoFace = (CharHomeKanojo.imageTypeHomeKanojo)Enum.Parse(typeof(CharHomeKanojo.imageTypeHomeKanojo), face);
+                idx = (int)homeKanojoFace;
+                break;
+            case "inari":
+                var inariFace = (CharInari.imageTypeInari)Enum.Parse(typeof(CharInari.imageTypeInari), face);
+                idx = (int)inariFace;
+                break;
+        }
+
+        return idx;
     }
 }

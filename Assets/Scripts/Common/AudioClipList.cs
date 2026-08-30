@@ -6,9 +6,10 @@ public class AudioClipList : MonoBehaviour
 {
     [SerializeField] public List<SongList> clipList;
 
-    public void audioPlay(string songName)
+    public void audioPlay(string songIdx)
     {
-        AudioClip clip = clipList.Find(x => x.songName.Equals(songName)).audio;
+        int idx = int.Parse(songIdx);
+        AudioClip clip = clipList[idx].audio;
         AudioManager.Instance.PlayBGM(clip);
     }
 

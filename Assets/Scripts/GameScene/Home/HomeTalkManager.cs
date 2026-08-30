@@ -31,7 +31,7 @@ public class HomeTalkManager : MonoBehaviour
     {
         List<int> candidates = new List<int>();
         List<string> con = new List<string>();
-        List<ImageData.imageType> imgs = new List<ImageData.imageType>();
+        List<GameManager.imageTypeKanojo> imgs = new List<GameManager.imageTypeKanojo>();
 
         ////•a‚Ýƒ[ƒ^‚‚¢
         if (GameManager.illMeter >= 60) candidates.Add(1);
@@ -108,7 +108,7 @@ public class TalkContent
     }
 
     public ContentType contentType;
-    public List<ImageData.imageType> imageType = new List<ImageData.imageType>();
+    public List<GameManager.imageTypeKanojo> imageType = new List<GameManager.imageTypeKanojo>();
     public List<string> contents = new List<string>();
 }
 

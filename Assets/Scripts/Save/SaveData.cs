@@ -3,6 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
+    public string herName;
     public bool isFirstPlay;
     public string seasonTime;
     public Season.season season;

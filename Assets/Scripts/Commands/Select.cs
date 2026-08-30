@@ -67,7 +67,7 @@ public class Select : Command
                     Debug.Log("コマンド 選択肢：" + storyCopy[GameManager.storyIndex]);
                     string num = storyCopy[GameManager.storyIndex].Substring(
                         storyCopy[GameManager.storyIndex].IndexOf(":") + 1
-                        ).Replace(">", "");
+                        ).Replace(">{", "");
                     Debug.Log("num : " + num);
                     var cNumber = int.Parse(num);
                     if(localChoiceNumber == cNumber)

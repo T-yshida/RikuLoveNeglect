@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public Load load;
 
     //彼女の名前
-    public static string gfName { get; private set; } = "まなか";//←後で消す
+    public static string gfName { get; private set; }
 
     //最初のトークフラグ
     public static bool firstTalkFlag { get; set; } = true;
@@ -103,6 +103,17 @@ public class GameManager : MonoBehaviour
         FOREST,
         SHRINE,
         AQUA
+    }
+
+    public enum imageTypeKanojo
+    {
+        NORMAL,
+        SMILE,
+        CRY,
+        TROUBLE,
+        ANGRY,
+        sSMILE,
+        SURPRISE
     }
 
     private void Awake()

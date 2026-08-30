@@ -34,6 +34,7 @@ public class Load : MonoBehaviour
             GameManager.copySEndFlag.SFlags = data.specialFlags;
             gameManager.endingObject.ending = data.endingFlags;
 
+            gameManager.SetName(data.herName);
             GameManager.nowSeason    = data.season;
             GameManager.seasonTime   = DateTime.Parse(data.seasonTime);
             GameManager.lastTime     = DateTime.Parse(data.lastTime);
