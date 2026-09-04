@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
     //ゲームを一回でも立ち上げたかどうか
     public static bool isFirstPlay { get; set; }
 
+    //ホーム画面専用のイベントを見るためのポイント
+    //ポイントは三時間ごとに1ポイント増える
+    public static int homeEventPoint { get; set; }
+
     //場所を表すenum
     public enum place 
     {
@@ -147,5 +151,17 @@ public class GameManager : MonoBehaviour
     public void SetName(string name)
     {
         gfName = name;
+    }
+
+    public static void Shuffle<T>(T[] array)
+    {
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+
+            T temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 }

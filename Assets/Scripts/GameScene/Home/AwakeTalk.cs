@@ -22,6 +22,8 @@ public class AwakeTalk : MonoBehaviour
             text.text = "ãvÇµÇ‘ÇËÅA" + fomatText + "Ç‘ÇËÇæÇÀ";
             talkPanel.alpha = 1.0f;
             Invoke("fadeTalkPanel", 5.0f);
+
+            GameManager.homeEventPoint = (int)(diffTime.TotalHours / 3);
         }
     }
 

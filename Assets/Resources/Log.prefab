@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5317509546520597693}
   - component: {fileID: 4092430320472180896}
   - component: {fileID: 765787983312466888}
+  - component: {fileID: 1798601824249858459}
   m_Layer: 5
   m_Name: LogText
   m_TagString: Untagged
@@ -256,3 +257,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5E8A\u306B\u5C31\u304F"
+--- !u!114 &1798601824249858459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964488399365996616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0156cb486cbb1e4eaa3eb77a3f03b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 6776419354162317151}
+  LogText: {fileID: 765787983312466888}
