@@ -3165,6 +3165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logObj: {fileID: 164635262076890207, guid: ff6aee927a0d2484ab0a42bb31542f96, type: 3}
+  content: {fileID: 1757616855}
 --- !u!1 &741952244
 GameObject:
   m_ObjectHideFlags: 0
