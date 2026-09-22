@@ -3,6 +3,9 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
+    public int numberOfDays;
+    public int restDate;
+    public bool isSkinship;
     public string herName;
     public bool isFirstPlay;
     public string seasonTime;

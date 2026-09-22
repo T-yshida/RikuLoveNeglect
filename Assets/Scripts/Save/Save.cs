@@ -27,6 +27,9 @@ public class Save : MonoBehaviour
         save.volume = GameManager.volume;
         save.isNotice = GameManager.isNotice;
         save.isFirstPlay = true;
+        save.numberOfDays = GameManager.numberOfDays;
+        save.restDate = GameManager.restDate;
+        save.isSkinship = GameManager.isSkinship;
 
         if ((DateTime.Now - GameManager.seasonTime).TotalDays >= 7)
         {

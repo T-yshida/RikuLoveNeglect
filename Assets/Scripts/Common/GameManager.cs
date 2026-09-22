@@ -95,6 +95,15 @@ public class GameManager : MonoBehaviour
     //ポイントは三時間ごとに1ポイント増える
     public static int homeEventPoint { get; set; }
 
+    //経過日数
+    public static int numberOfDays { get; set; }
+
+    //デート回数
+    public static int restDate { get; set; } = 2;
+
+    //スキンシップ出来るかどうか
+    public static bool isSkinship { get; set; } = true;
+
     //場所を表すenum
     public enum place 
     {

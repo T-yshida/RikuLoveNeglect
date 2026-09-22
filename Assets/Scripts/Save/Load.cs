@@ -45,6 +45,9 @@ public class Load : MonoBehaviour
             GameManager.volume       = data.volume;
             GameManager.isNotice     = data.isNotice;
             GameManager.isFirstPlay  = data.isFirstPlay;
+            GameManager.numberOfDays = data.numberOfDays;
+            GameManager.restDate     = data.restDate;
+            GameManager.isSkinship   = data.isSkinship;
         }
         
     }
