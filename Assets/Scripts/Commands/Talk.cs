@@ -1,23 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class Talk : MonoBehaviour
 {
-    [SerializeField] UnityEngine.UI.Text nameText;
-    [SerializeField] TextMeshProUGUI talkingText;
+    [SerializeField] private Text nameText;
+    [SerializeField] private TextMeshProUGUI talkingText;
 
     [TextArea]
     [SerializeField] private string message;
 
     [SerializeField] private float interval = 0.05f;
 
-    private bool isTyping = false;
+    private bool isTyping;
+    private Coroutine typingCoroutine;
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -35,34 +34,51 @@ public class Talk : MonoBehaviour
 
     public void callTalk(string name, string talkMessage)
     {
-        nameText.text = (name == "îﬁèó") ? GameManager.gfName : name;
+        nameText.text = name == "îﬁèó"
+            ? GameManager.gfName
+            : name;
+
         message = talkMessage.Replace("{$name}", GameManager.gfName);
 
-        StartCoroutine(TypeText());
+        // à»ëOÇÃï∂éöëóÇËÇ™écÇ¡ÇƒÇ¢ÇΩÇÁí‚é~
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeText());
     }
 
-    public IEnumerator TypeText()
+    private IEnumerator TypeText()
     {
         isTyping = true;
 
         talkingText.text = message;
         talkingText.maxVisibleCharacters = 0;
 
-        for (int i = 0; i <= message.Length; i++)
+        // TMPÇ…é¿ç€ÇÃï∂éöêîÇåvéZÇ≥ÇπÇÈ
+        talkingText.ForceMeshUpdate();
+        int characterCount = talkingText.textInfo.characterCount;
+
+        for (int i = 0; i <= characterCount; i++)
         {
             talkingText.maxVisibleCharacters = i;
             yield return new WaitForSeconds(interval);
         }
 
         isTyping = false;
+        typingCoroutine = null;
     }
 
-    void SkipText()
+    private void SkipText()
     {
-        StopCoroutine(TypeText());
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
 
-        talkingText.maxVisibleCharacters = message.Length;
-
+        talkingText.maxVisibleCharacters = int.MaxValue;
         isTyping = false;
     }
 }

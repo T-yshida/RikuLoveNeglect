@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Content;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -10,7 +11,12 @@ public class PlaceSelect : MonoBehaviour
     string moveSceneName = "NovelScene";
 
     [SerializeField] private GameObject _parent;
-    
+
+    private void OnEnable()
+    {
+        canDate();
+    }
+
     public void selectPlace(string place)
     {
         GameManager.restDate--;
@@ -25,16 +31,9 @@ public class PlaceSelect : MonoBehaviour
         for (var i = 0; i < children.Length; i++)
         {
             var button = children[i].GetComponent<Button>();
+
             //デート回数が残り0だった場合はボタンを押せなくする
-            if (GameManager.restDate <= 0)
-            {
-                button.interactable = false;
-            }
-            //デート回数が残り0ではない場合ボタンを押せるようにする
-            else
-            {
-                button.interactable = true;
-            }
+            button.interactable = (GameManager.restDate >= 0);
         }
     }
 
