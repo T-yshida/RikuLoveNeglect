@@ -18,7 +18,7 @@ public class ValueChange : Command
 
         switch (varName) 
         {
-            case "病みメータ":
+            case "病み度":
                 GameManager.illMeter += int.Parse(value);
                 break;
             case "親愛度":
