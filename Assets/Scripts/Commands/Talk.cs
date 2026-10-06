@@ -34,10 +34,12 @@ public class Talk : MonoBehaviour
 
     public void callTalk(string name, string talkMessage)
     {
+        //テキストボックス上の名前を変える
         nameText.text = name == "彼女"
             ? GameManager.gfName
             : name;
 
+        //内容に{$name}が含まれていた場合、彼女の名前に置き換える。
         message = talkMessage.Replace("{$name}", GameManager.gfName);
 
         // 以前の文字送りが残っていたら停止

@@ -21,6 +21,7 @@ public class PlaceSelect : MonoBehaviour
     {
         GameManager.restDate--;
 
+        Debug.Log("データ回数：" + GameManager.restDate);
         GameManager.datePlace = (GameManager.place)Enum.Parse(typeof(GameManager.place), place);
         FadeManager.Instance.LoadSceneWithFade(moveSceneName);
     }
@@ -33,7 +34,7 @@ public class PlaceSelect : MonoBehaviour
             var button = children[i].GetComponent<Button>();
 
             //デート回数が残り0だった場合はボタンを押せなくする
-            button.interactable = (GameManager.restDate >= 0);
+            button.interactable = (GameManager.restDate > 0);
         }
     }
 

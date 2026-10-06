@@ -49,6 +49,24 @@ public class Select : Command
         buttonCurrent.Add(buttonObj);
 
         Text label = buttonObj.GetComponentInChildren<Text>();
+
+        if (text.Contains("{"))
+        {
+            int startIdx = text.IndexOf("{");
+            int length = text.IndexOf("}") - text.IndexOf("{");
+
+            string vName = text.Substring(startIdx + 2, length - 2);
+
+            switch (vName)
+            {
+                case "name":
+                    text = text.Replace("{$name}", GameManager.gfName);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         label.text = text;
 
         Button button = buttonObj.GetComponent<Button>();
@@ -57,6 +75,7 @@ public class Select : Command
 
         //選択肢ボタンが押された時の処理
         //GameManager.storyIndexを選択肢の分進める
+        //各ボタンに下記機能を付加
         button.onClick.AddListener(() =>
         {
             Debug.Log(text + " が押された");
