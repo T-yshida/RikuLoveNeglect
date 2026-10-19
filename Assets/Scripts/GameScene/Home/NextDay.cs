@@ -11,7 +11,7 @@ public class NextDay : MonoBehaviour
 
     private void OnEnable()
     {
-        dayText.text = GameManager.numberOfDays.ToString();
+        dayText.text = GameManager.numberOfDays.ToString() + "“ú";
     }
     public void nextToDay()
     {
@@ -24,7 +24,7 @@ public class NextDay : MonoBehaviour
     public async void doFade()
     {
         await FadeManager.Instance.FadeCanvasGroup.DOFade(1, 1f).AsyncWaitForCompletion();
-        dayText.text = GameManager.numberOfDays.ToString();
+        dayText.text = GameManager.numberOfDays.ToString() + "“ú";
         await Task.Delay(500);
         await FadeManager.Instance.FadeCanvasGroup.DOFade(0, 1f).AsyncWaitForCompletion();
         
