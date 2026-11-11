@@ -9908,17 +9908,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437489778}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1832418796}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 5.344391, y: 22.904694}
+  m_SizeDelta: {x: -120.6315, y: -158.8058}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437489780
 MonoBehaviour:
@@ -9953,7 +9953,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1437489781
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12279,18 +12279,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832418795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1437489779}
   m_Father: {fileID: 663878492}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: -286}
-  m_SizeDelta: {x: 911.0095, y: 315.9063}
+  m_AnchoredPosition: {x: -15, y: -360}
+  m_SizeDelta: {x: 985, y: 570}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832418797
 MonoBehaviour:
@@ -12312,8 +12312,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: edbf4c82b999b5c40aed0d6dfaa50ebe, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12349,9 +12349,9 @@ MonoBehaviour:
   - contentType: 0
     imageType: 000000000100000005000000
     contents:
-    - test1
-    - test2
-    - test3
+    - "\u4ECA\u65E5\u306F\u4F55\u3057\u3088\u3063\u304B\uFF1F"
+    - "\u4ECA\u65E5\u306F\u4F55\u3057\u3088\u3063\u304B\uFF1F"
+    - "\u4ECA\u65E5\u306F\u4F55\u3057\u3088\u3063\u304B\uFF1F"
   - contentType: 1
     imageType: 0200000004000000
     contents:
